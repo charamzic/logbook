@@ -1,0 +1,51 @@
+<div class="w-100">
+  <% content_for :title, "Kniha jízd" %>
+
+  <h1 class="mb-3">Kniha jízd</h1>
+  <% if user_signed_in? %>
+
+  <div id="trips">
+      <table class="table table-hover table-bordered mt-5">
+        <thead class="table table-secondary">
+          <tr class="text-center">
+            <th scope="col">#</th>
+            <th scope="col">Odkud</th>
+            <th scope="col">Kam</th>
+            <th scope="col">Vozidlo</th>
+            <th scope="col">Km</th>
+            <th scope="col">Cesta</th>
+            <th scope="col">Náklady</th>
+          </tr>
+        </thead>
+
+        <tbody>
+    <% @trips.each_with_index do |trip, index| %>
+      <tr onclick="location.href='<%= trip_path(trip) %>'">
+            <td class="text-center"><%= index + 1 %></td>
+            <td><%= trip.origin %></td>
+            <td><%= trip.destination %></td>
+            <td class="text-center"><%= trip.vehicle.name if trip.vehicle %></td>
+            <td class="text-end"><%= trip.distance %></td>
+            <td class="text-center">
+              <% if trip.round_trip %>
+                <span>&#x1F501;</span>
+              <% else %>
+                <span>&#x27A1;</span>
+              <% end %>
+            </td>
+            <td class="text-end"><%= trip.costs %> Kč</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+
+  <%= link_to "Nová cesta", new_trip_path, class:"btn btn-secondary" %>
+
+  <% else %>
+    <div>
+      <p>K používání aplikace je nutné se přihlásit.</p>
+      <%= link_to "Pokud ještě nemáš účet, registruj se tady.", new_user_registration_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" %>
+    </div>
+  <% end %>
+</div>

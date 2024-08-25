@@ -1,0 +1,14 @@
+cs:
+  activerecord:
+    errors:
+      models:
+        trip:
+          attributes:
+            user_id:
+              blank: "Musí být vyplněno"
+          user:
+            required: "Musí být vyplněno"
+      messages:
+        blank: "Nemůže být prázdné"
+        required: "Je povinné"
+

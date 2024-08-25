@@ -1,0 +1,13 @@
+<div class="w-75">
+  <% content_for :title, "New trip" %>
+
+  <h1>Nová cesta</h1>
+
+  <%= render "form", trip: @trip %>
+
+  <br>
+
+  <div>
+    <%= link_to "Zpět na seznam cest", trips_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>

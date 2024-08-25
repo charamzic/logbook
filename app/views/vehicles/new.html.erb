@@ -1,0 +1,13 @@
+<div class="w-50">
+<% content_for :title, "Nové vozidlo" %>
+
+<h1>Nové vozidlo</h1>
+
+<%= render "form", vehicle: @vehicle %>
+
+<br>
+
+<div>
+  <%= link_to "Zpět na vozový park", vehicles_path, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"   %>
+</div>
+</div>

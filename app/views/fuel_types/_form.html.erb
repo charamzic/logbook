@@ -1,0 +1,27 @@
+<%= form_with(model: fuel_type) do |form| %>
+  <% if fuel_type.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(fuel_type.errors.count, "chyba zabránila", "chyby zabránily") %> úspěšnému uložení:</h2>
+
+      <ul>
+        <% fuel_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group my-3">
+    <span class="input-group-text">&#9981;</span>
+    <%= form.text_field :name, class: "form-control text-center", placeholder: "Palivo" %>
+  </div>
+
+  <div class="input-group my-3">
+    <span class="input-group-text">&#x1F4B0;</span>
+    <%= form.text_field :price_per_liter, class: "form-control text-center", placeholder: "Cena za litr" %>
+  </div>
+
+  <div>
+    <%= form.submit "Uložit", class: "btn btn-secondary" %>
+  </div>
+<% end %>

@@ -1,0 +1,59 @@
+<%= form_with(model: trip) do |form| %>
+  <% if trip.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(trip.errors.count, "chyba zabránila", "chyby zabránily") %> úspěšnému uložení:</h2>
+
+      <ul>
+        <% trip.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group my-3 w-50">
+    <span class="input-group-text">&#x1F697;</span>
+    <%= form.collection_select :vehicle_id, 
+                                Vehicle.all, 
+                                :id, 
+                                :name,
+                                { prompt: "Vyber vozidlo" },
+                                { class: "form-select", required: true, id: "vehicle_select" } %>
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">&#x1F3E0;</span>
+    <%= form.text_field :origin, id: "autocomplete_origin", class: "form-control", placeholder: "Startovní pozice", required: true %>
+    <span class="input-group-text">&#x1F4CD;</span>
+    <%= form.text_field :destination, id: "autocomplete_destination", class: "form-control", placeholder: "Cílová destinace", required: true %>
+  </div>
+
+  <div class="mb-3 form-check">
+    <%= form.check_box :round_trip, id: "round_trip_checkbox", class: "form-check-input" %>
+    <label for="round_trip_checkbox" class="form-check-label">Započítat zpáteční cestu</label>
+  </div>
+
+  <div 
+    data-bs-toggle="tooltip"
+    data-bs-title="Pokud nezadáte cenu paliva, bude počítáno se základní cenou, přiřazenou k vybranému vozidlu."
+    class="input-group mb-3 w-50">
+    <span class="input-group-text">&#x1F4B0;</span>
+    <%= form.number_field :fuel_price_override, step: 2.5, class: "form-control", placeholder: "Cena paliva za 1l (volitelné)" %>
+  </div>
+
+
+  <div 
+    data-bs-toggle="tooltip"
+    data-bs-title="Vzdálenost a náklady jsou vypočítány automaticky. Vzdálenost můžete přepsat na požadovanou hodnotu"
+    class="input-group mb-3">
+    <span class="input-group-text">&#x1F6E3;</span>
+    <%= form.text_field :distance, id: "distance_result", class: "form-control text-center", placeholder: "Vzdálenost (km)" %>
+    <span class="input-group-text">&#x1F4B0;</span>
+    <%= form.number_field :costs, class: "form-control text-center disabled", placeholder: "Náklady celkem", readonly: true %>
+  </div>
+
+
+  <div class="mb-3">
+    <%= form.submit "Uložit", class: "btn btn-secondary" %>
+  </div>
+<% end %>

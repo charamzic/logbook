@@ -1,0 +1,14 @@
+<div class="w-50">
+  <% content_for :title, "Editing vehicle" %>
+
+  <h1>Upravit vozidlo</h1>
+
+  <%= render "form", vehicle: @vehicle %>
+
+  <br>
+
+  <div>
+    <%= link_to "Detail vozidla", @vehicle, class: "btn btn-outline-secondary"  %>
+    <%= link_to "Zpět na vozový park", vehicles_path, class: "btn btn-outline-secondary"  %>
+  </div>
+</div>

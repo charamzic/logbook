@@ -1,0 +1,40 @@
+<div class="w-100">
+  <h1>Detail Cesty</h1>
+
+  <table class="table table-hover table-bordered mt-5">
+    <thead class="text-center">
+      <tr class="table table-secondary">
+        <th scope="col">Odkud</th>
+        <th scope="col">Kam</th>
+        <th scope="col">Vozidlo</th>
+        <th scope="col">Vzdálenost</th>
+        <th scope="col">Cesta</th>
+        <th scope="col">Náklady</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="text-center">
+        <td><%= @trip.origin %></td>
+        <td><%= @trip.destination %></td>
+        <td><%= @trip.vehicle&.name || "Žádné vozidlo nepřiřazeno" %></td>
+        <td><%= @trip.distance %> Km</td>
+        <td class="text-center">
+          <% if @trip.round_trip %>
+            <span>&#x1F501;</span>
+          <% else %>
+            <span>&#x27A1;</span>
+          <% end %>
+        </td>
+        <td><%= @trip.costs %> Kč</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex gap-2">
+    <%= link_to "Zpět na seznam cest", trips_path, class: "btn btn-outline-secondary" %>
+      <%= link_to "Nová cesta", new_trip_path, class:"btn btn-outline-secondary" %>
+    <%= link_to "Upravit cestu", edit_trip_path(@trip), class: "btn btn-secondary" %> 
+    <%= button_to "Smazat cestu", @trip, method: :delete ,class: "btn btn-outline-danger"  %>
+  </div>
+</div>

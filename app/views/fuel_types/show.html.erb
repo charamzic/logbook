@@ -1,0 +1,28 @@
+<div class="w-50">
+  <p style="color: green"><%= notice %></p>
+  <h1>Detail paliva</h1>
+
+  <table class="table table-hover table-bordered mt-5">
+    <thead>
+      <tr class="table table-secondary text-center">
+        <th scope="col">Palivo</th>
+        <th scope="col">Cena za 1 litr</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr class="text-center">
+        <td><%= @fuel_type.name %></td>
+        <td><%= @fuel_type.price_per_liter %> Kč</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex gap-2">
+    <%= link_to "Zpět na seznam paliv", fuel_types_path, class: "btn btn-outline-secondary" %>
+    <%= link_to "Upravit palivo", edit_fuel_type_path(@fuel_type), class: "btn btn-secondary" %> 
+    <%= button_to "Smazat palivo", @fuel_type, method: :delete ,class: "btn btn-outline-danger"  %>
+  </div>
+</div>
+
+

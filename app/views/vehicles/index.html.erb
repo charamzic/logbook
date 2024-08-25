@@ -1,0 +1,28 @@
+<div class="w-75" >
+  <p style="color: green"><%= notice %></p>
+  <% content_for :title, "Vehicles" %>
+  <h1>Vozový park</h1>
+
+  <table class="table table-hover table-bordered mt-5">
+    <thead class="table table-secondary">
+      <tr class="text-center">
+        <th>Vozidlo</th>
+        <th>Spotřeba (1l / 100 Km)</th>
+        <th>Celkem najeto</th>
+        <th>Palivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vehicles.each do |vehicle| %>
+        <tr onclick="location.href='<%= vehicle_path(vehicle) %>'" class="text-end">
+          <td class="text-start"><%= vehicle.name %></td>
+          <td class="text-center"><%= vehicle.fuel_consumption %></td>
+          <td><%= vehicle.total_km %> km</td>
+          <td><%= vehicle.fuel_type.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "Přidat nové vozidlo", new_vehicle_path, class: "btn btn-secondary" %>
+</div>

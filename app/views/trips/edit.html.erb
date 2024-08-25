@@ -1,0 +1,14 @@
+<div class="w-75">
+  <% content_for :title, "Editing trip" %>
+
+  <h1>Upravit cestu</h1>
+
+  <%= render "form", trip: @trip %>
+
+  <br>
+
+  <div>
+    <%= link_to "Detail cesty", @trip, class: "btn btn-outline-secondary" %> 
+    <%= link_to "Zpět na seznam cest", trips_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>

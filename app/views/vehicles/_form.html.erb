@@ -1,0 +1,39 @@
+<%= form_with(model: vehicle) do |form| %>
+  <% if vehicle.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(vehicle.errors.count, "chyba zabránila", "chyby zabránily") %> úspěšnému uložení:</h2>
+
+      <ul>
+        <% vehicle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group my-3">
+    <span class="input-group-text">&#x1F697;</span>
+    <%= form.text_field :name, class: "form-control", placeholder: "Vozidlo", required: true  %>
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">&#x1F525;</span>
+    <%= form.text_field :fuel_consumption, class: "form-control", placeholder: "Spotřeba paliva", required: true %>
+    <span class="input-group-text">&#128739;</span>
+    <%= form.text_field :total_km, class: "form-control", placeholder: "Celkem najeto km" %>
+  </div>
+
+    <div class="input-group my-3 w-50">
+    <span class="input-group-text">&#9981;</span>
+    <%= form.collection_select :fuel_type_id,
+                                FuelType.all,
+                                :id,
+                                :name,
+                                { prompt: "Vyber druh paliva" },
+                                { class: "form-select", required: true } %>
+  </div>
+
+  <div>
+    <%= form.submit "Uložit", class: "btn btn-secondary" %>
+  </div>
+<% end %>

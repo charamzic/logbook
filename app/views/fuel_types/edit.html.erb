@@ -1,0 +1,14 @@
+<div>
+  <% content_for :title, "Editing fuel type" %>
+
+  <h1>Upravit palivo</h1>
+
+  <%= render "form", fuel_type: @fuel_type %>
+
+  <br>
+
+  <div>
+    <%= link_to "Detail", @fuel_type, class: "btn btn-outline-secondary" %>
+    <%= link_to "Zpět na seznam druhů paliva", fuel_types_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
