@@ -5,7 +5,7 @@ gem "devise-i18n", "~> 1.12", ">= 1.12.1"
 gem 'envfile', '~> 0.0.3'
 gem "sqlite3", ">= 1.4"
 
-gem "rails", "~> 7.2.0"
+gem "rails", "~> 7.2.1"
 gem "sprockets-rails"
 gem "puma", ">= 5.0"
 gem "importmap-rails"
