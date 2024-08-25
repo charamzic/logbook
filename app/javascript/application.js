@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-import { initializeAutocomplete } from "autocomplete.js";
+import { initializeAutocomplete } from "./autocomplete.js";
 
 document.addEventListener("turbo:load", function () {
   initializeAutocomplete("autocomplete_origin");
