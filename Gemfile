@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "devise", "~> 4.9", ">= 4.9.4"
 gem "devise-i18n", "~> 1.12", ">= 1.12.1"
 gem 'envfile', '~> 0.0.3'
+gem "sqlite3", ">= 1.4"
 
 gem "rails", "~> 7.2.0"
 gem "sprockets-rails"
@@ -27,7 +28,6 @@ end
 
 group :development do
   gem "web-console"
-  gem "sqlite3", ">= 1.4"
 end
 
 group :production do
