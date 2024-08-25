@@ -1,8 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails";
-import "./controllers";
+import "controllers";
 
-import { initializeAutocomplete } from "./autocomplete.js";
+import { initializeAutocomplete } from "autocomplete.js";
 
 document.addEventListener("turbo:load", function () {
   initializeAutocomplete("autocomplete_origin");
