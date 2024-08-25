@@ -28,5 +28,5 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
-  url: postgresql://postgres:CJLXSVcdRsFQzsynYLuYbaLFdOOGkCKh@junction.proxy.rlwy.net:55809/railway
+  url: <%= ENV['DATABASE_URL'] %>
   # database: path/to/persistent/storage/production.sqlite3
